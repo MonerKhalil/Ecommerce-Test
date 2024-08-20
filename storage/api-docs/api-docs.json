@@ -1,0 +1,3618 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Test-BackEnd",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://127.0.0.1:8000"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "noauthAuth": {
+        "type": "http",
+        "scheme": "noauth"
+      },
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  },
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "Auth"
+    },
+    {
+      "name": "Users"
+    },
+    {
+      "name": "Products"
+    },
+    {
+      "name": "Orders"
+    }
+  ],
+  "paths": {
+    "/api/v1/register": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "api/v1/register",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "first_name": {
+                    "type": "string",
+                    "example": "F_test"
+                  },
+                  "last_name": {
+                    "type": "string",
+                    "example": "L_test"
+                  },
+                  "email": {
+                    "type": "string",
+                    "example": "fl_test@test.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "example": "P@ssw0rd@111@"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "noauthAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Host": {
+                "schema": {
+                  "type": "string",
+                  "example": "127.0.0.1:8000"
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Tue, 20 Aug 2024 02:14:31 GMT"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "close"
+                }
+              },
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "PHP/8.1.12"
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "example": "no-cache, private"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              },
+              "X-RateLimit-Limit": {
+                "schema": {
+                  "type": "integer",
+                  "example": "60"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "schema": {
+                  "type": "integer",
+                  "example": "57"
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string",
+                  "example": "*"
+                }
+              },
+              "Set-Cookie": {
+                "schema": {
+                  "type": "string",
+                  "example": "laravel_session=S09b700MucEuyEOTkPuTJeiDO9LzNf2lNm7xFTj5; expires=Tue, 20 Aug 2024 04:14:31 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "timestamp": "2024-08-20T02:14:31.569046Z",
+                  "status": true,
+                  "code": 200,
+                  "message": "Addition completed successfully",
+                  "data": {
+                    "user": {
+                      "name": "F_test L_test",
+                      "first_name": "F_test",
+                      "last_name": "L_test",
+                      "email": "fl_test@test.com",
+                      "role": "user",
+                      "updated_at": "2024-08-20T02:14:31.000000Z",
+                      "created_at": "2024-08-20T02:14:31.000000Z",
+                      "id": 4
+                    },
+                    "access_token": {
+                      "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL3YxL3JlZ2lzdGVyIiwiaWF0IjoxNzI0MTIwMDcxLCJleHAiOjE3MjQxMjM2NzEsIm5iZiI6MTcyNDEyMDA3MSwianRpIjoiTlNqdk5acUFlVW9vMlRqUCIsInN1YiI6IjQiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0._4eR-PMpvnJhBF1Fspha5vqaNiJFoOeG1gp7kEXsMZE",
+                      "type": "Bearer"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/login": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "api/v1/login",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "example": "fl_test@test.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "example": "P@ssw0rd@111@"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "noauthAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Host": {
+                "schema": {
+                  "type": "string",
+                  "example": "127.0.0.1:8000"
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Tue, 20 Aug 2024 02:16:27 GMT"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "close"
+                }
+              },
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "PHP/8.1.12"
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "example": "no-cache, private"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              },
+              "X-RateLimit-Limit": {
+                "schema": {
+                  "type": "integer",
+                  "example": "60"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "schema": {
+                  "type": "integer",
+                  "example": "59"
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string",
+                  "example": "*"
+                }
+              },
+              "Set-Cookie": {
+                "schema": {
+                  "type": "string",
+                  "example": "laravel_session=S09b700MucEuyEOTkPuTJeiDO9LzNf2lNm7xFTj5; expires=Tue, 20 Aug 2024 04:16:27 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "timestamp": "2024-08-20T02:16:27.391706Z",
+                  "status": true,
+                  "code": 200,
+                  "message": "The previous operation completed successfully",
+                  "data": {
+                    "user": {
+                      "id": 4,
+                      "name": "F_test L_test",
+                      "first_name": "F_test",
+                      "last_name": "L_test",
+                      "email": "fl_test@test.com",
+                      "email_verified_at": null,
+                      "role": "user",
+                      "created_by": null,
+                      "updated_by": null,
+                      "created_at": "2024-08-20T02:14:31.000000Z",
+                      "updated_at": "2024-08-20T02:14:31.000000Z"
+                    },
+                    "access_token": {
+                      "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL3YxL2xvZ2luIiwiaWF0IjoxNzI0MTIwMTg3LCJleHAiOjE3MjQxMjM3ODcsIm5iZiI6MTcyNDEyMDE4NywianRpIjoiNEU0MXExUnNBUFl2VENWUiIsInN1YiI6IjQiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.aMsQ6i7ln-8rcmtgM81F5njXA6jevR3wX9yjXMMIt3g",
+                      "type": "Bearer"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/auth/logout": {
+      "delete": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "api/v1/auth/logout",
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Host": {
+                "schema": {
+                  "type": "string",
+                  "example": "127.0.0.1:8000"
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Tue, 20 Aug 2024 02:15:50 GMT"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "close"
+                }
+              },
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "PHP/8.1.12"
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "example": "no-cache, private"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              },
+              "X-RateLimit-Limit": {
+                "schema": {
+                  "type": "integer",
+                  "example": "60"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "schema": {
+                  "type": "integer",
+                  "example": "59"
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string",
+                  "example": "*"
+                }
+              },
+              "Set-Cookie": {
+                "schema": {
+                  "type": "string",
+                  "example": "laravel_session=S09b700MucEuyEOTkPuTJeiDO9LzNf2lNm7xFTj5; expires=Tue, 20 Aug 2024 04:15:50 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "timestamp": "2024-08-20T02:15:50.225168Z",
+                  "status": true,
+                  "code": 200,
+                  "message": "The previous operation completed successfully",
+                  "data": null
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/auth/profile/show": {
+      "get": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "api/v1/auth/profile/show",
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Host": {
+                "schema": {
+                  "type": "string",
+                  "example": "127.0.0.1:8000"
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Tue, 20 Aug 2024 02:17:09 GMT"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "close"
+                }
+              },
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "PHP/8.1.12"
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "example": "no-cache, private"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              },
+              "X-RateLimit-Limit": {
+                "schema": {
+                  "type": "integer",
+                  "example": "60"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "schema": {
+                  "type": "integer",
+                  "example": "59"
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string",
+                  "example": "*"
+                }
+              },
+              "Set-Cookie": {
+                "schema": {
+                  "type": "string",
+                  "example": "laravel_session=S09b700MucEuyEOTkPuTJeiDO9LzNf2lNm7xFTj5; expires=Tue, 20 Aug 2024 04:17:09 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "timestamp": "2024-08-20T02:17:09.930265Z",
+                  "status": true,
+                  "code": 200,
+                  "message": "The previous operation completed successfully",
+                  "data": {
+                    "user": {
+                      "id": 4,
+                      "name": "F_test L_test",
+                      "first_name": "F_test",
+                      "last_name": "L_test",
+                      "email": "fl_test@test.com",
+                      "email_verified_at": null,
+                      "role": "user",
+                      "created_by": null,
+                      "updated_by": null,
+                      "created_at": "2024-08-20T02:14:31.000000Z",
+                      "updated_at": "2024-08-20T02:14:31.000000Z"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/auth/profile/edit": {
+      "put": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "api/v1/auth/profile/edit",
+        "requestBody": {
+          "content": {}
+        },
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "email",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "xssx@xxsk.com"
+          },
+          {
+            "name": "first_name",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "mskm"
+          },
+          {
+            "name": "last_name",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "kmkds"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Host": {
+                "schema": {
+                  "type": "string",
+                  "example": "127.0.0.1:8000"
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Tue, 20 Aug 2024 02:17:57 GMT"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "close"
+                }
+              },
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "PHP/8.1.12"
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "example": "no-cache, private"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              },
+              "X-RateLimit-Limit": {
+                "schema": {
+                  "type": "integer",
+                  "example": "60"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "schema": {
+                  "type": "integer",
+                  "example": "57"
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string",
+                  "example": "*"
+                }
+              },
+              "Set-Cookie": {
+                "schema": {
+                  "type": "string",
+                  "example": "laravel_session=S09b700MucEuyEOTkPuTJeiDO9LzNf2lNm7xFTj5; expires=Tue, 20 Aug 2024 04:17:57 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "timestamp": "2024-08-20T02:17:57.526188Z",
+                  "status": true,
+                  "code": 200,
+                  "message": "The modification was completed successfully",
+                  "data": {
+                    "result": {
+                      "id": 4,
+                      "name": "mskm kmkds",
+                      "first_name": "mskm",
+                      "last_name": "kmkds",
+                      "email": "xssx@xxsk.com",
+                      "email_verified_at": null,
+                      "role": "user",
+                      "created_by": null,
+                      "updated_by": 4,
+                      "created_at": "2024-08-20T02:14:31.000000Z",
+                      "updated_at": "2024-08-20T02:17:57.000000Z"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/dashboard/admin/user": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "api/v1/dashboard/admin/user",
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "countItems",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "default->10",
+            "example": "2"
+          },
+          {
+            "name": "filter[name]",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "moner"
+          },
+          {
+            "name": "filter[first_name]",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "moner"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Host": {
+                "schema": {
+                  "type": "string",
+                  "example": "127.0.0.1:8000"
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Tue, 20 Aug 2024 02:21:34 GMT"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "close"
+                }
+              },
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "PHP/8.1.12"
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "example": "no-cache, private"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              },
+              "X-RateLimit-Limit": {
+                "schema": {
+                  "type": "integer",
+                  "example": "60"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "schema": {
+                  "type": "integer",
+                  "example": "58"
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string",
+                  "example": "*"
+                }
+              },
+              "Set-Cookie": {
+                "schema": {
+                  "type": "string",
+                  "example": "laravel_session=S09b700MucEuyEOTkPuTJeiDO9LzNf2lNm7xFTj5; expires=Tue, 20 Aug 2024 04:21:34 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "examples": {
+                  "example-0": {
+                    "summary": "api/v1/dashboard/admin/user",
+                    "value": {
+                      "timestamp": "2024-08-20T02:21:34.324805Z",
+                      "status": true,
+                      "code": 200,
+                      "message": "The previous operation completed successfully",
+                      "data": {
+                        "users": {
+                          "items": [
+                            {
+                              "id": 1,
+                              "name": "super_admin",
+                              "first_name": "super",
+                              "last_name": "admin",
+                              "email": "super_admin@admin.com",
+                              "email_verified_at": "2024-08-20T02:21:22.000000Z",
+                              "role": "super_admin",
+                              "created_by": null,
+                              "updated_by": null,
+                              "created_at": "2024-08-20T02:21:22.000000Z",
+                              "updated_at": "2024-08-20T02:21:22.000000Z"
+                            },
+                            {
+                              "id": 2,
+                              "name": "moner_khalil",
+                              "first_name": "moner",
+                              "last_name": "khalil",
+                              "email": "moner_khalil@user.com",
+                              "email_verified_at": "2024-08-20T02:21:22.000000Z",
+                              "role": "user",
+                              "created_by": null,
+                              "updated_by": null,
+                              "created_at": "2024-08-20T02:21:22.000000Z",
+                              "updated_at": "2024-08-20T02:21:22.000000Z"
+                            },
+                            {
+                              "id": 3,
+                              "name": "moner_khalil1",
+                              "first_name": "moner",
+                              "last_name": "khalil1",
+                              "email": "moner_khalil1@user.com",
+                              "email_verified_at": "2024-08-20T02:21:22.000000Z",
+                              "role": "user",
+                              "created_by": null,
+                              "updated_by": null,
+                              "created_at": "2024-08-20T02:21:22.000000Z",
+                              "updated_at": "2024-08-20T02:21:22.000000Z"
+                            }
+                          ],
+                          "current_page": 1,
+                          "url_next_page": null,
+                          "url_pre_page": null,
+                          "url_first_page": "http://127.0.0.1:8000/api/v1/dashboard/admin/user?page=1",
+                          "url_last_page": "http://127.0.0.1:8000/api/v1/dashboard/admin/user?page=1",
+                          "total_pages": 1,
+                          "total_items": 3,
+                          "has_more_pages": false
+                        }
+                      }
+                    }
+                  },
+                  "example-1": {
+                    "summary": "api/v1/dashboard/admin/user",
+                    "value": {
+                      "timestamp": "2024-08-20T02:22:39.048324Z",
+                      "status": true,
+                      "code": 200,
+                      "message": "The previous operation completed successfully",
+                      "data": {
+                        "users": {
+                          "items": [
+                            {
+                              "id": 2,
+                              "name": "moner_khalil",
+                              "first_name": "moner",
+                              "last_name": "khalil",
+                              "email": "moner_khalil@user.com",
+                              "email_verified_at": "2024-08-20T02:21:22.000000Z",
+                              "role": "user",
+                              "created_by": null,
+                              "updated_by": null,
+                              "created_at": "2024-08-20T02:21:22.000000Z",
+                              "updated_at": "2024-08-20T02:21:22.000000Z"
+                            },
+                            {
+                              "id": 3,
+                              "name": "moner_khalil1",
+                              "first_name": "moner",
+                              "last_name": "khalil1",
+                              "email": "moner_khalil1@user.com",
+                              "email_verified_at": "2024-08-20T02:21:22.000000Z",
+                              "role": "user",
+                              "created_by": null,
+                              "updated_by": null,
+                              "created_at": "2024-08-20T02:21:22.000000Z",
+                              "updated_at": "2024-08-20T02:21:22.000000Z"
+                            }
+                          ],
+                          "current_page": 1,
+                          "url_next_page": null,
+                          "url_pre_page": null,
+                          "url_first_page": "http://127.0.0.1:8000/api/v1/dashboard/admin/user?countItems=2&filter%5Bname%5D=moner&filter%5Bfirst_name%5D=moner&page=1",
+                          "url_last_page": "http://127.0.0.1:8000/api/v1/dashboard/admin/user?countItems=2&filter%5Bname%5D=moner&filter%5Bfirst_name%5D=moner&page=1",
+                          "total_pages": 1,
+                          "total_items": 2,
+                          "has_more_pages": false
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "api/v1/dashboard/admin/user",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "role": {
+                    "type": "string",
+                    "example": "user"
+                  },
+                  "first_name": {
+                    "type": "string",
+                    "example": "user1"
+                  },
+                  "last_name": {
+                    "type": "string",
+                    "example": "__djn"
+                  },
+                  "email": {
+                    "type": "string",
+                    "example": "useree@user.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "example": "P@#$w0rd@123@"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Host": {
+                "schema": {
+                  "type": "string",
+                  "example": "127.0.0.1:8000"
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Tue, 20 Aug 2024 02:25:33 GMT"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "close"
+                }
+              },
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "PHP/8.1.12"
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "example": "no-cache, private"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              },
+              "X-RateLimit-Limit": {
+                "schema": {
+                  "type": "integer",
+                  "example": "60"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "schema": {
+                  "type": "integer",
+                  "example": "59"
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string",
+                  "example": "*"
+                }
+              },
+              "Set-Cookie": {
+                "schema": {
+                  "type": "string",
+                  "example": "laravel_session=S09b700MucEuyEOTkPuTJeiDO9LzNf2lNm7xFTj5; expires=Tue, 20 Aug 2024 04:25:33 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "timestamp": "2024-08-20T02:25:33.542009Z",
+                  "status": true,
+                  "code": 200,
+                  "message": "Addition completed successfully",
+                  "data": {
+                    "result": {
+                      "role": "user",
+                      "first_name": "user1",
+                      "last_name": "__djn",
+                      "email": "useree@user.com",
+                      "name": "user1 __djn",
+                      "created_by": 1,
+                      "updated_at": "2024-08-20T02:25:33.000000Z",
+                      "created_at": "2024-08-20T02:25:33.000000Z",
+                      "id": 4
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/dashboard/admin/user/create": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "api/v1/dashboard/admin/user/create",
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Host": {
+                "schema": {
+                  "type": "string",
+                  "example": "127.0.0.1:8000"
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Tue, 20 Aug 2024 02:23:01 GMT"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "close"
+                }
+              },
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "PHP/8.1.12"
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "example": "no-cache, private"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              },
+              "X-RateLimit-Limit": {
+                "schema": {
+                  "type": "integer",
+                  "example": "60"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "schema": {
+                  "type": "integer",
+                  "example": "58"
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string",
+                  "example": "*"
+                }
+              },
+              "Set-Cookie": {
+                "schema": {
+                  "type": "string",
+                  "example": "laravel_session=S09b700MucEuyEOTkPuTJeiDO9LzNf2lNm7xFTj5; expires=Tue, 20 Aug 2024 04:23:01 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "timestamp": "2024-08-20T02:23:01.308425Z",
+                  "status": true,
+                  "code": 200,
+                  "message": "The previous operation completed successfully",
+                  "data": {
+                    "roles": [
+                      {
+                        "id": 1,
+                        "name": "super_admin",
+                        "display_name": "Super Admin",
+                        "description": "Super Admin",
+                        "created_by": null,
+                        "updated_by": null,
+                        "created_at": "2024-08-20T02:21:22.000000Z",
+                        "updated_at": "2024-08-20T02:21:22.000000Z"
+                      },
+                      {
+                        "id": 2,
+                        "name": "user",
+                        "display_name": "User",
+                        "description": "User",
+                        "created_by": null,
+                        "updated_by": null,
+                        "created_at": "2024-08-20T02:21:22.000000Z",
+                        "updated_at": "2024-08-20T02:21:22.000000Z"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/dashboard/admin/user/{user}": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "api/v1/dashboard/admin/user/{user}",
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "user",
+            "in": "path",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true,
+            "example": "4"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Host": {
+                "schema": {
+                  "type": "string",
+                  "example": "127.0.0.1:8000"
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Tue, 20 Aug 2024 02:25:56 GMT"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "close"
+                }
+              },
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "PHP/8.1.12"
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "example": "no-cache, private"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              },
+              "X-RateLimit-Limit": {
+                "schema": {
+                  "type": "integer",
+                  "example": "60"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "schema": {
+                  "type": "integer",
+                  "example": "58"
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string",
+                  "example": "*"
+                }
+              },
+              "Set-Cookie": {
+                "schema": {
+                  "type": "string",
+                  "example": "laravel_session=S09b700MucEuyEOTkPuTJeiDO9LzNf2lNm7xFTj5; expires=Tue, 20 Aug 2024 04:25:56 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "timestamp": "2024-08-20T02:25:56.084803Z",
+                  "status": true,
+                  "code": 200,
+                  "message": "The previous operation completed successfully",
+                  "data": {
+                    "user": {
+                      "id": 4,
+                      "name": "user1 __djn",
+                      "first_name": "user1",
+                      "last_name": "__djn",
+                      "email": "useree@user.com",
+                      "email_verified_at": null,
+                      "role": "user",
+                      "created_by": 1,
+                      "updated_by": null,
+                      "created_at": "2024-08-20T02:25:33.000000Z",
+                      "updated_at": "2024-08-20T02:25:33.000000Z"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "api/v1/dashboard/admin/user/{user}",
+        "requestBody": {
+          "content": {}
+        },
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "role",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "user"
+          },
+          {
+            "name": "first_name",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "user1"
+          },
+          {
+            "name": "last_name",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "__djn"
+          },
+          {
+            "name": "email",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "useree@user.com"
+          },
+          {
+            "name": "user",
+            "in": "path",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true,
+            "example": "4"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Host": {
+                "schema": {
+                  "type": "string",
+                  "example": "127.0.0.1:8000"
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Tue, 20 Aug 2024 02:26:49 GMT"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "close"
+                }
+              },
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "PHP/8.1.12"
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "example": "no-cache, private"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              },
+              "X-RateLimit-Limit": {
+                "schema": {
+                  "type": "integer",
+                  "example": "60"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "schema": {
+                  "type": "integer",
+                  "example": "59"
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string",
+                  "example": "*"
+                }
+              },
+              "Set-Cookie": {
+                "schema": {
+                  "type": "string",
+                  "example": "laravel_session=S09b700MucEuyEOTkPuTJeiDO9LzNf2lNm7xFTj5; expires=Tue, 20 Aug 2024 04:26:49 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "timestamp": "2024-08-20T02:26:49.872646Z",
+                  "status": true,
+                  "code": 200,
+                  "message": "The modification was completed successfully",
+                  "data": {
+                    "result": {
+                      "id": 4,
+                      "name": "user1 __djn",
+                      "first_name": "user1",
+                      "last_name": "__djn",
+                      "email": "useree@user.com",
+                      "email_verified_at": null,
+                      "role": "user",
+                      "created_by": 1,
+                      "updated_by": null,
+                      "created_at": "2024-08-20T02:25:33.000000Z",
+                      "updated_at": "2024-08-20T02:25:33.000000Z"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "api/v1/dashboard/admin/user/{user}",
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "user",
+            "in": "path",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true,
+            "example": "4"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Host": {
+                "schema": {
+                  "type": "string",
+                  "example": "127.0.0.1:8000"
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Tue, 20 Aug 2024 02:29:17 GMT"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "close"
+                }
+              },
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "PHP/8.1.12"
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "example": "no-cache, private"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              },
+              "X-RateLimit-Limit": {
+                "schema": {
+                  "type": "integer",
+                  "example": "60"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "schema": {
+                  "type": "integer",
+                  "example": "59"
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string",
+                  "example": "*"
+                }
+              },
+              "Set-Cookie": {
+                "schema": {
+                  "type": "string",
+                  "example": "laravel_session=S09b700MucEuyEOTkPuTJeiDO9LzNf2lNm7xFTj5; expires=Tue, 20 Aug 2024 04:29:17 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "timestamp": "2024-08-20T02:29:17.641830Z",
+                  "status": true,
+                  "code": 200,
+                  "message": "The deletion was completed successfully",
+                  "data": null
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/dashboard/admin/user/{user}/edit": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "api/v1/dashboard/admin/user/{user}/edit",
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "user",
+            "in": "path",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true,
+            "example": "4"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Host": {
+                "schema": {
+                  "type": "string",
+                  "example": "127.0.0.1:8000"
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Tue, 20 Aug 2024 02:26:13 GMT"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "close"
+                }
+              },
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "PHP/8.1.12"
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "example": "no-cache, private"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              },
+              "X-RateLimit-Limit": {
+                "schema": {
+                  "type": "integer",
+                  "example": "60"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "schema": {
+                  "type": "integer",
+                  "example": "57"
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string",
+                  "example": "*"
+                }
+              },
+              "Set-Cookie": {
+                "schema": {
+                  "type": "string",
+                  "example": "laravel_session=S09b700MucEuyEOTkPuTJeiDO9LzNf2lNm7xFTj5; expires=Tue, 20 Aug 2024 04:26:13 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "timestamp": "2024-08-20T02:26:13.963070Z",
+                  "status": true,
+                  "code": 200,
+                  "message": "The previous operation completed successfully",
+                  "data": {
+                    "user": {
+                      "id": 4,
+                      "name": "user1 __djn",
+                      "first_name": "user1",
+                      "last_name": "__djn",
+                      "email": "useree@user.com",
+                      "email_verified_at": null,
+                      "role": "user",
+                      "created_by": 1,
+                      "updated_by": null,
+                      "created_at": "2024-08-20T02:25:33.000000Z",
+                      "updated_at": "2024-08-20T02:25:33.000000Z"
+                    },
+                    "roles": [
+                      {
+                        "id": 1,
+                        "name": "super_admin",
+                        "display_name": "Super Admin",
+                        "description": "Super Admin",
+                        "created_by": null,
+                        "updated_by": null,
+                        "created_at": "2024-08-20T02:21:22.000000Z",
+                        "updated_at": "2024-08-20T02:21:22.000000Z"
+                      },
+                      {
+                        "id": 2,
+                        "name": "user",
+                        "display_name": "User",
+                        "description": "User",
+                        "created_by": null,
+                        "updated_by": null,
+                        "created_at": "2024-08-20T02:21:22.000000Z",
+                        "updated_at": "2024-08-20T02:21:22.000000Z"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/dashboard/admin/user/delete/multi": {
+      "delete": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "api/v1/dashboard/admin/user/delete/multi",
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "ids[0]",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            },
+            "example": "5"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Host": {
+                "schema": {
+                  "type": "string",
+                  "example": "127.0.0.1:8000"
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Tue, 20 Aug 2024 02:29:37 GMT"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "close"
+                }
+              },
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "PHP/8.1.12"
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "example": "no-cache, private"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              },
+              "X-RateLimit-Limit": {
+                "schema": {
+                  "type": "integer",
+                  "example": "60"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "schema": {
+                  "type": "integer",
+                  "example": "58"
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string",
+                  "example": "*"
+                }
+              },
+              "Set-Cookie": {
+                "schema": {
+                  "type": "string",
+                  "example": "laravel_session=S09b700MucEuyEOTkPuTJeiDO9LzNf2lNm7xFTj5; expires=Tue, 20 Aug 2024 04:29:37 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "timestamp": "2024-08-20T02:29:37.364876Z",
+                  "status": true,
+                  "code": 200,
+                  "message": "The deletion was completed successfully",
+                  "data": null
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/dashboard/admin/product": {
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "api/v1/dashboard/admin/product",
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "countItems",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "default->10",
+            "example": "2"
+          },
+          {
+            "name": "filter[name]",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "1mBEjDulkH"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Host": {
+                "schema": {
+                  "type": "string",
+                  "example": "127.0.0.1:8000"
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Tue, 20 Aug 2024 02:30:02 GMT"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "close"
+                }
+              },
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "PHP/8.1.12"
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "example": "no-cache, private"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              },
+              "X-RateLimit-Limit": {
+                "schema": {
+                  "type": "integer",
+                  "example": "60"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "schema": {
+                  "type": "integer",
+                  "example": "57"
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string",
+                  "example": "*"
+                }
+              },
+              "Set-Cookie": {
+                "schema": {
+                  "type": "string",
+                  "example": "laravel_session=S09b700MucEuyEOTkPuTJeiDO9LzNf2lNm7xFTj5; expires=Tue, 20 Aug 2024 04:30:02 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "examples": {
+                  "example-0": {
+                    "summary": "api/v1/dashboard/admin/product",
+                    "value": {
+                      "timestamp": "2024-08-20T02:30:02.355571Z",
+                      "status": true,
+                      "code": 200,
+                      "message": "The previous operation completed successfully",
+                      "data": {
+                        "products": {
+                          "items": [
+                            {
+                              "id": 1,
+                              "name": "FRBLqu61AJ",
+                              "description": "gRoDRKu1KuUXLudnzmHp8wNAcHKKjnR5ab7PIDgBCYvJH9mzD2",
+                              "price": "100.450",
+                              "quantity": 5,
+                              "created_by": null,
+                              "updated_by": null,
+                              "created_at": "2024-08-20T02:21:22.000000Z",
+                              "updated_at": "2024-08-20T02:21:22.000000Z"
+                            },
+                            {
+                              "id": 2,
+                              "name": "a8Z0NhS8Ym",
+                              "description": "UnFbLKq78zOwVccs8KHN88TpEYNeqbfsFsnpNtj4sOvjzyeWJ7",
+                              "price": "200.900",
+                              "quantity": 10,
+                              "created_by": null,
+                              "updated_by": null,
+                              "created_at": "2024-08-20T02:21:22.000000Z",
+                              "updated_at": "2024-08-20T02:21:22.000000Z"
+                            },
+                            {
+                              "id": 3,
+                              "name": "S2sjt3OLWi",
+                              "description": "s2cfz4XM3mzfMXWFo0AHId6en1P3vOrWI5609N9jFhgkJCx5Sw",
+                              "price": "301.350",
+                              "quantity": 15,
+                              "created_by": null,
+                              "updated_by": null,
+                              "created_at": "2024-08-20T02:21:22.000000Z",
+                              "updated_at": "2024-08-20T02:21:22.000000Z"
+                            },
+                            {
+                              "id": 4,
+                              "name": "xoPAj81QzR",
+                              "description": "Ksipli4gwqZhbtrPthgxLkrTAZpovoHzznj6wiHSPy5eszr8hD",
+                              "price": "401.800",
+                              "quantity": 20,
+                              "created_by": null,
+                              "updated_by": null,
+                              "created_at": "2024-08-20T02:21:22.000000Z",
+                              "updated_at": "2024-08-20T02:21:22.000000Z"
+                            },
+                            {
+                              "id": 5,
+                              "name": "GD77dCUHvg",
+                              "description": "7dQJJd6x99iVnneoOPrpPQhKrbFMXA6ZomsqgXvRfysqYNLc7B",
+                              "price": "502.250",
+                              "quantity": 25,
+                              "created_by": null,
+                              "updated_by": null,
+                              "created_at": "2024-08-20T02:21:22.000000Z",
+                              "updated_at": "2024-08-20T02:21:22.000000Z"
+                            },
+                            {
+                              "id": 6,
+                              "name": "6DaIx1x0z4",
+                              "description": "qXou4jAtB3KBOHdPlxIojxsHbfMN31ldhmUTxhBjL2AHdeVWtp",
+                              "price": "602.700",
+                              "quantity": 30,
+                              "created_by": null,
+                              "updated_by": null,
+                              "created_at": "2024-08-20T02:21:22.000000Z",
+                              "updated_at": "2024-08-20T02:21:22.000000Z"
+                            },
+                            {
+                              "id": 7,
+                              "name": "D3H5iH2Z3f",
+                              "description": "pCBGeMB2yzeuWNbWXNSXpQEmz1auj80YBoi6mt5WZEpsuV32sq",
+                              "price": "703.150",
+                              "quantity": 35,
+                              "created_by": null,
+                              "updated_by": null,
+                              "created_at": "2024-08-20T02:21:22.000000Z",
+                              "updated_at": "2024-08-20T02:21:22.000000Z"
+                            },
+                            {
+                              "id": 8,
+                              "name": "ZK8qe60POR",
+                              "description": "1QF2WDafUoY382Tipmv6Q80UJ1ocwvj5Y6fKL4sjJxTOzVq7vR",
+                              "price": "803.600",
+                              "quantity": 40,
+                              "created_by": null,
+                              "updated_by": null,
+                              "created_at": "2024-08-20T02:21:22.000000Z",
+                              "updated_at": "2024-08-20T02:21:22.000000Z"
+                            },
+                            {
+                              "id": 9,
+                              "name": "1mBEjDulkH",
+                              "description": "RbqK1t2KpEHb1vxdUzfsakC5SkDpp6MlcJxz3LoF8DxVrgMr37",
+                              "price": "904.050",
+                              "quantity": 45,
+                              "created_by": null,
+                              "updated_by": null,
+                              "created_at": "2024-08-20T02:21:22.000000Z",
+                              "updated_at": "2024-08-20T02:21:22.000000Z"
+                            },
+                            {
+                              "id": 10,
+                              "name": "qIeerBgW0E",
+                              "description": "yWHedL3aEPmrlrpaHOSSivrVzRAop2nSTDUL7U8dZfzfd7uIBd",
+                              "price": "1004.500",
+                              "quantity": 50,
+                              "created_by": null,
+                              "updated_by": null,
+                              "created_at": "2024-08-20T02:21:22.000000Z",
+                              "updated_at": "2024-08-20T02:21:22.000000Z"
+                            }
+                          ],
+                          "current_page": 1,
+                          "url_next_page": null,
+                          "url_pre_page": null,
+                          "url_first_page": "http://127.0.0.1:8000/api/v1/dashboard/admin/product?page=1",
+                          "url_last_page": "http://127.0.0.1:8000/api/v1/dashboard/admin/product?page=1",
+                          "total_pages": 1,
+                          "total_items": 10,
+                          "has_more_pages": false
+                        }
+                      }
+                    }
+                  },
+                  "example-1": {
+                    "summary": "api/v1/dashboard/admin/product",
+                    "value": {
+                      "timestamp": "2024-08-20T02:30:24.166067Z",
+                      "status": true,
+                      "code": 200,
+                      "message": "The previous operation completed successfully",
+                      "data": {
+                        "products": {
+                          "items": [
+                            {
+                              "id": 9,
+                              "name": "1mBEjDulkH",
+                              "description": "RbqK1t2KpEHb1vxdUzfsakC5SkDpp6MlcJxz3LoF8DxVrgMr37",
+                              "price": "904.050",
+                              "quantity": 45,
+                              "created_by": null,
+                              "updated_by": null,
+                              "created_at": "2024-08-20T02:21:22.000000Z",
+                              "updated_at": "2024-08-20T02:21:22.000000Z"
+                            }
+                          ],
+                          "current_page": 1,
+                          "url_next_page": null,
+                          "url_pre_page": null,
+                          "url_first_page": "http://127.0.0.1:8000/api/v1/dashboard/admin/product?countItems=2&filter%5Bname%5D=1mBEjDulkH&page=1",
+                          "url_last_page": "http://127.0.0.1:8000/api/v1/dashboard/admin/product?countItems=2&filter%5Bname%5D=1mBEjDulkH&page=1",
+                          "total_pages": 1,
+                          "total_items": 1,
+                          "has_more_pages": false
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "api/v1/dashboard/admin/product",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "kmdskms"
+                  },
+                  "price": {
+                    "type": "number",
+                    "example": "212.2"
+                  },
+                  "quantity": {
+                    "type": "integer",
+                    "example": "32"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Host": {
+                "schema": {
+                  "type": "string",
+                  "example": "127.0.0.1:8000"
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Tue, 20 Aug 2024 02:31:36 GMT"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "close"
+                }
+              },
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "PHP/8.1.12"
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "example": "no-cache, private"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              },
+              "X-RateLimit-Limit": {
+                "schema": {
+                  "type": "integer",
+                  "example": "60"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "schema": {
+                  "type": "integer",
+                  "example": "59"
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string",
+                  "example": "*"
+                }
+              },
+              "Set-Cookie": {
+                "schema": {
+                  "type": "string",
+                  "example": "laravel_session=S09b700MucEuyEOTkPuTJeiDO9LzNf2lNm7xFTj5; expires=Tue, 20 Aug 2024 04:31:36 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "timestamp": "2024-08-20T02:31:36.052844Z",
+                  "status": true,
+                  "code": 200,
+                  "message": "Addition completed successfully",
+                  "data": {
+                    "result": {
+                      "name": "kmdskms",
+                      "price": "212.2",
+                      "quantity": "32",
+                      "created_by": 1,
+                      "updated_at": "2024-08-20T02:31:36.000000Z",
+                      "created_at": "2024-08-20T02:31:36.000000Z",
+                      "id": 11
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/dashboard/admin/product/{product}": {
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "api/v1/dashboard/admin/product/{product}",
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "product",
+            "in": "path",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true,
+            "example": "3"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Host": {
+                "schema": {
+                  "type": "string",
+                  "example": "127.0.0.1:8000"
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Tue, 20 Aug 2024 02:31:50 GMT"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "close"
+                }
+              },
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "PHP/8.1.12"
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "example": "no-cache, private"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              },
+              "X-RateLimit-Limit": {
+                "schema": {
+                  "type": "integer",
+                  "example": "60"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "schema": {
+                  "type": "integer",
+                  "example": "58"
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string",
+                  "example": "*"
+                }
+              },
+              "Set-Cookie": {
+                "schema": {
+                  "type": "string",
+                  "example": "laravel_session=S09b700MucEuyEOTkPuTJeiDO9LzNf2lNm7xFTj5; expires=Tue, 20 Aug 2024 04:31:50 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "timestamp": "2024-08-20T02:31:50.325492Z",
+                  "status": true,
+                  "code": 200,
+                  "message": "The previous operation completed successfully",
+                  "data": {
+                    "product": {
+                      "id": 3,
+                      "name": "S2sjt3OLWi",
+                      "description": "s2cfz4XM3mzfMXWFo0AHId6en1P3vOrWI5609N9jFhgkJCx5Sw",
+                      "price": "301.350",
+                      "quantity": 15,
+                      "created_by": null,
+                      "updated_by": null,
+                      "created_at": "2024-08-20T02:21:22.000000Z",
+                      "updated_at": "2024-08-20T02:21:22.000000Z"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "api/v1/dashboard/admin/product/{product}",
+        "requestBody": {
+          "content": {}
+        },
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "ssssssssssss"
+          },
+          {
+            "name": "price",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            },
+            "example": "100"
+          },
+          {
+            "name": "quantity",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            },
+            "example": "50"
+          },
+          {
+            "name": "product",
+            "in": "path",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true,
+            "example": "4"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Host": {
+                "schema": {
+                  "type": "string",
+                  "example": "127.0.0.1:8000"
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Tue, 20 Aug 2024 02:32:38 GMT"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "close"
+                }
+              },
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "PHP/8.1.12"
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "example": "no-cache, private"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              },
+              "X-RateLimit-Limit": {
+                "schema": {
+                  "type": "integer",
+                  "example": "60"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "schema": {
+                  "type": "integer",
+                  "example": "59"
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string",
+                  "example": "*"
+                }
+              },
+              "Set-Cookie": {
+                "schema": {
+                  "type": "string",
+                  "example": "laravel_session=S09b700MucEuyEOTkPuTJeiDO9LzNf2lNm7xFTj5; expires=Tue, 20 Aug 2024 04:32:38 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "timestamp": "2024-08-20T02:32:38.695061Z",
+                  "status": true,
+                  "code": 200,
+                  "message": "The modification was completed successfully",
+                  "data": {
+                    "result": {
+                      "id": 4,
+                      "name": "ssssssssssss",
+                      "description": "Ksipli4gwqZhbtrPthgxLkrTAZpovoHzznj6wiHSPy5eszr8hD",
+                      "price": "100.000",
+                      "quantity": 50,
+                      "created_by": null,
+                      "updated_by": 1,
+                      "created_at": "2024-08-20T02:21:22.000000Z",
+                      "updated_at": "2024-08-20T02:32:38.000000Z"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "api/v1/dashboard/admin/product/{product}",
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "product",
+            "in": "path",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true,
+            "example": "10"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Host": {
+                "schema": {
+                  "type": "string",
+                  "example": "127.0.0.1:8000"
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Tue, 20 Aug 2024 02:32:55 GMT"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "close"
+                }
+              },
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "PHP/8.1.12"
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "example": "no-cache, private"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              },
+              "X-RateLimit-Limit": {
+                "schema": {
+                  "type": "integer",
+                  "example": "60"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "schema": {
+                  "type": "integer",
+                  "example": "58"
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string",
+                  "example": "*"
+                }
+              },
+              "Set-Cookie": {
+                "schema": {
+                  "type": "string",
+                  "example": "laravel_session=S09b700MucEuyEOTkPuTJeiDO9LzNf2lNm7xFTj5; expires=Tue, 20 Aug 2024 04:32:55 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "timestamp": "2024-08-20T02:32:55.124103Z",
+                  "status": true,
+                  "code": 200,
+                  "message": "The deletion was completed successfully",
+                  "data": null
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/dashboard/admin/product/delete/multi": {
+      "delete": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "api/v1/dashboard/admin/product/delete/multi",
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "ids[0]",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            },
+            "example": "11"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Host": {
+                "schema": {
+                  "type": "string",
+                  "example": "127.0.0.1:8000"
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Tue, 20 Aug 2024 02:33:20 GMT"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "close"
+                }
+              },
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "PHP/8.1.12"
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "example": "no-cache, private"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              },
+              "X-RateLimit-Limit": {
+                "schema": {
+                  "type": "integer",
+                  "example": "60"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "schema": {
+                  "type": "integer",
+                  "example": "56"
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string",
+                  "example": "*"
+                }
+              },
+              "Set-Cookie": {
+                "schema": {
+                  "type": "string",
+                  "example": "laravel_session=S09b700MucEuyEOTkPuTJeiDO9LzNf2lNm7xFTj5; expires=Tue, 20 Aug 2024 04:33:20 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "timestamp": "2024-08-20T02:33:20.288758Z",
+                  "status": true,
+                  "code": 200,
+                  "message": "The deletion was completed successfully",
+                  "data": null
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/dashboard/order/all": {
+      "get": {
+        "tags": [
+          "Orders"
+        ],
+        "summary": "api/v1/dashboard/order/all",
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Host": {
+                "schema": {
+                  "type": "string",
+                  "example": "127.0.0.1:8000"
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Tue, 20 Aug 2024 02:33:39 GMT"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "close"
+                }
+              },
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "PHP/8.1.12"
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "example": "no-cache, private"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              },
+              "X-RateLimit-Limit": {
+                "schema": {
+                  "type": "integer",
+                  "example": "60"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "schema": {
+                  "type": "integer",
+                  "example": "59"
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string",
+                  "example": "*"
+                }
+              },
+              "Set-Cookie": {
+                "schema": {
+                  "type": "string",
+                  "example": "laravel_session=S09b700MucEuyEOTkPuTJeiDO9LzNf2lNm7xFTj5; expires=Tue, 20 Aug 2024 04:33:39 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "timestamp": "2024-08-20T02:33:39.712259Z",
+                  "status": true,
+                  "code": 200,
+                  "message": "The previous operation completed successfully",
+                  "data": {
+                    "orders": {
+                      "items": [
+                        {
+                          "id": 1,
+                          "user_id": 3,
+                          "order_code": "Order-Code-ttgCo",
+                          "price_total": "100.000",
+                          "created_by": null,
+                          "updated_by": null,
+                          "created_at": "2024-08-20T02:21:22.000000Z",
+                          "updated_at": "2024-08-20T02:21:22.000000Z",
+                          "user": {
+                            "id": 3,
+                            "name": "moner_khalil1",
+                            "first_name": "moner",
+                            "last_name": "khalil1",
+                            "email": "moner_khalil1@user.com",
+                            "email_verified_at": "2024-08-20T02:21:22.000000Z",
+                            "role": "user",
+                            "created_by": null,
+                            "updated_by": null,
+                            "created_at": "2024-08-20T02:21:22.000000Z",
+                            "updated_at": "2024-08-20T02:21:22.000000Z"
+                          }
+                        },
+                        {
+                          "id": 2,
+                          "user_id": 2,
+                          "order_code": "Order-Code-glf26",
+                          "price_total": "200.000",
+                          "created_by": null,
+                          "updated_by": null,
+                          "created_at": "2024-08-20T02:21:22.000000Z",
+                          "updated_at": "2024-08-20T02:21:22.000000Z",
+                          "user": {
+                            "id": 2,
+                            "name": "moner_khalil",
+                            "first_name": "moner",
+                            "last_name": "khalil",
+                            "email": "moner_khalil@user.com",
+                            "email_verified_at": "2024-08-20T02:21:22.000000Z",
+                            "role": "user",
+                            "created_by": null,
+                            "updated_by": null,
+                            "created_at": "2024-08-20T02:21:22.000000Z",
+                            "updated_at": "2024-08-20T02:21:22.000000Z"
+                          }
+                        },
+                        {
+                          "id": 3,
+                          "user_id": 3,
+                          "order_code": "Order-Code-kJyLF",
+                          "price_total": "300.000",
+                          "created_by": null,
+                          "updated_by": null,
+                          "created_at": "2024-08-20T02:21:22.000000Z",
+                          "updated_at": "2024-08-20T02:21:22.000000Z",
+                          "user": {
+                            "id": 3,
+                            "name": "moner_khalil1",
+                            "first_name": "moner",
+                            "last_name": "khalil1",
+                            "email": "moner_khalil1@user.com",
+                            "email_verified_at": "2024-08-20T02:21:22.000000Z",
+                            "role": "user",
+                            "created_by": null,
+                            "updated_by": null,
+                            "created_at": "2024-08-20T02:21:22.000000Z",
+                            "updated_at": "2024-08-20T02:21:22.000000Z"
+                          }
+                        },
+                        {
+                          "id": 4,
+                          "user_id": 2,
+                          "order_code": "Order-Code-osdTV",
+                          "price_total": "400.000",
+                          "created_by": null,
+                          "updated_by": null,
+                          "created_at": "2024-08-20T02:21:22.000000Z",
+                          "updated_at": "2024-08-20T02:21:22.000000Z",
+                          "user": {
+                            "id": 2,
+                            "name": "moner_khalil",
+                            "first_name": "moner",
+                            "last_name": "khalil",
+                            "email": "moner_khalil@user.com",
+                            "email_verified_at": "2024-08-20T02:21:22.000000Z",
+                            "role": "user",
+                            "created_by": null,
+                            "updated_by": null,
+                            "created_at": "2024-08-20T02:21:22.000000Z",
+                            "updated_at": "2024-08-20T02:21:22.000000Z"
+                          }
+                        },
+                        {
+                          "id": 5,
+                          "user_id": 3,
+                          "order_code": "Order-Code-IZ55H",
+                          "price_total": "500.000",
+                          "created_by": null,
+                          "updated_by": null,
+                          "created_at": "2024-08-20T02:21:22.000000Z",
+                          "updated_at": "2024-08-20T02:21:22.000000Z",
+                          "user": {
+                            "id": 3,
+                            "name": "moner_khalil1",
+                            "first_name": "moner",
+                            "last_name": "khalil1",
+                            "email": "moner_khalil1@user.com",
+                            "email_verified_at": "2024-08-20T02:21:22.000000Z",
+                            "role": "user",
+                            "created_by": null,
+                            "updated_by": null,
+                            "created_at": "2024-08-20T02:21:22.000000Z",
+                            "updated_at": "2024-08-20T02:21:22.000000Z"
+                          }
+                        }
+                      ],
+                      "current_page": 1,
+                      "url_next_page": null,
+                      "url_pre_page": null,
+                      "url_first_page": "http://127.0.0.1:8000/api/v1/dashboard/order/all?page=1",
+                      "url_last_page": "http://127.0.0.1:8000/api/v1/dashboard/order/all?page=1",
+                      "total_pages": 1,
+                      "total_items": 5,
+                      "has_more_pages": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/dashboard/order/{order}/show": {
+      "get": {
+        "tags": [
+          "Orders"
+        ],
+        "summary": "api/v1/dashboard/order/{order}/show",
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "order",
+            "in": "path",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true,
+            "example": "1"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Host": {
+                "schema": {
+                  "type": "string",
+                  "example": "127.0.0.1:8000"
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Tue, 20 Aug 2024 02:34:07 GMT"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "close"
+                }
+              },
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "PHP/8.1.12"
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "example": "no-cache, private"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              },
+              "X-RateLimit-Limit": {
+                "schema": {
+                  "type": "integer",
+                  "example": "60"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "schema": {
+                  "type": "integer",
+                  "example": "57"
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string",
+                  "example": "*"
+                }
+              },
+              "Set-Cookie": {
+                "schema": {
+                  "type": "string",
+                  "example": "laravel_session=S09b700MucEuyEOTkPuTJeiDO9LzNf2lNm7xFTj5; expires=Tue, 20 Aug 2024 04:34:07 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "timestamp": "2024-08-20T02:34:07.529534Z",
+                  "status": true,
+                  "code": 200,
+                  "message": "The previous operation completed successfully",
+                  "data": {
+                    "order": {
+                      "id": 1,
+                      "user_id": 3,
+                      "order_code": "Order-Code-ttgCo",
+                      "price_total": "100.000",
+                      "created_by": null,
+                      "updated_by": null,
+                      "created_at": "2024-08-20T02:21:22.000000Z",
+                      "updated_at": "2024-08-20T02:21:22.000000Z",
+                      "user": {
+                        "id": 3,
+                        "name": "moner_khalil1",
+                        "first_name": "moner",
+                        "last_name": "khalil1",
+                        "email": "moner_khalil1@user.com",
+                        "email_verified_at": "2024-08-20T02:21:22.000000Z",
+                        "role": "user",
+                        "created_by": null,
+                        "updated_by": null,
+                        "created_at": "2024-08-20T02:21:22.000000Z",
+                        "updated_at": "2024-08-20T02:21:22.000000Z"
+                      },
+                      "products": [
+                        {
+                          "id": 8,
+                          "name": "ZK8qe60POR",
+                          "description": "1QF2WDafUoY382Tipmv6Q80UJ1ocwvj5Y6fKL4sjJxTOzVq7vR",
+                          "price": "803.600",
+                          "quantity": 40,
+                          "created_by": null,
+                          "updated_by": null,
+                          "created_at": "2024-08-20T02:21:22.000000Z",
+                          "updated_at": "2024-08-20T02:21:22.000000Z",
+                          "pivot": {
+                            "order_id": 1,
+                            "product_id": 8,
+                            "price": "100.900",
+                            "quantity": 1
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/dashboard/order/{order}/destroy": {
+      "delete": {
+        "tags": [
+          "Orders"
+        ],
+        "summary": "api/v1/dashboard/order/{order}/destroy",
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "order",
+            "in": "path",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true,
+            "example": "1"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Host": {
+                "schema": {
+                  "type": "string",
+                  "example": "127.0.0.1:8000"
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Tue, 20 Aug 2024 02:34:29 GMT"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "close"
+                }
+              },
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "PHP/8.1.12"
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "example": "no-cache, private"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              },
+              "X-RateLimit-Limit": {
+                "schema": {
+                  "type": "integer",
+                  "example": "60"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "schema": {
+                  "type": "integer",
+                  "example": "56"
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string",
+                  "example": "*"
+                }
+              },
+              "Set-Cookie": {
+                "schema": {
+                  "type": "string",
+                  "example": "laravel_session=S09b700MucEuyEOTkPuTJeiDO9LzNf2lNm7xFTj5; expires=Tue, 20 Aug 2024 04:34:29 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "timestamp": "2024-08-20T02:34:29.448320Z",
+                  "status": true,
+                  "code": 200,
+                  "message": "The deletion was completed successfully",
+                  "data": null
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/dashboard/order/delete/multi-orders": {
+      "delete": {
+        "tags": [
+          "Orders"
+        ],
+        "summary": "api/v1/dashboard/order/delete/multi-orders",
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "ids[0]",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            },
+            "example": "3"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Host": {
+                "schema": {
+                  "type": "string",
+                  "example": "127.0.0.1:8000"
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Tue, 20 Aug 2024 02:35:07 GMT"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "close"
+                }
+              },
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "PHP/8.1.12"
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "example": "no-cache, private"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              },
+              "X-RateLimit-Limit": {
+                "schema": {
+                  "type": "integer",
+                  "example": "60"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "schema": {
+                  "type": "integer",
+                  "example": "57"
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string",
+                  "example": "*"
+                }
+              },
+              "Set-Cookie": {
+                "schema": {
+                  "type": "string",
+                  "example": "laravel_session=S09b700MucEuyEOTkPuTJeiDO9LzNf2lNm7xFTj5; expires=Tue, 20 Aug 2024 04:35:07 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "timestamp": "2024-08-20T02:35:07.546002Z",
+                  "status": true,
+                  "code": 200,
+                  "message": "The deletion was completed successfully",
+                  "data": null
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/dashboard/order/create/multi-products": {
+      "post": {
+        "tags": [
+          "Orders"
+        ],
+        "summary": "api/v1/dashboard/order/create/multi-products",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "orders[0][product_id]": {
+                    "type": "integer",
+                    "example": "1"
+                  },
+                  "orders[0][quantity]": {
+                    "type": "integer",
+                    "example": "2"
+                  },
+                  "orders[1][product_id]": {
+                    "type": "integer",
+                    "example": "2"
+                  },
+                  "orders[1][quantity]": {
+                    "type": "integer",
+                    "example": "5"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "Host": {
+                "schema": {
+                  "type": "string",
+                  "example": "127.0.0.1:8000"
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Tue, 20 Aug 2024 02:37:03 GMT"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "close"
+                }
+              },
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "PHP/8.1.12"
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "example": "no-cache, private"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json"
+                }
+              },
+              "X-RateLimit-Limit": {
+                "schema": {
+                  "type": "integer",
+                  "example": "60"
+                }
+              },
+              "X-RateLimit-Remaining": {
+                "schema": {
+                  "type": "integer",
+                  "example": "58"
+                }
+              },
+              "Access-Control-Allow-Origin": {
+                "schema": {
+                  "type": "string",
+                  "example": "*"
+                }
+              },
+              "Set-Cookie": {
+                "schema": {
+                  "type": "string",
+                  "example": "laravel_session=S09b700MucEuyEOTkPuTJeiDO9LzNf2lNm7xFTj5; expires=Tue, 20 Aug 2024 04:37:03 GMT; Max-Age=7200; path=/; httponly; samesite=lax"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "timestamp": "2024-08-20T02:37:03.465278Z",
+                  "status": true,
+                  "code": 200,
+                  "message": "Addition completed successfully",
+                  "data": {
+                    "order": {
+                      "user_id": 1,
+                      "order_code": "order-code-66c4014f4c6b2-super-admin",
+                      "created_by": 1,
+                      "updated_at": "2024-08-20T02:37:03.000000Z",
+                      "created_at": "2024-08-20T02:37:03.000000Z",
+                      "id": 6,
+                      "price_total": 1205.4,
+                      "updated_by": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
