@@ -14,6 +14,9 @@ run command php artisan migrate:fresh --seed
 
 run command php artisan serve
 
+## Document Apis :
+http://127.0.0.1:8000/api/documentation
+
 ## @...Users...@
 
 ### Super Admin :
@@ -25,6 +28,3 @@ password : 123123123
 email : moner_khalil@user.com
 
 password : 123123123
-
-### Document Apis :
-http://127.0.0.1:8000/api/documentation
