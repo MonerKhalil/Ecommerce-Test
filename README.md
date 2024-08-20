@@ -25,8 +25,3 @@ password : 123123123
 email : moner_khalil@user.com
 
 password : 123123123
-
-### Doctor :
-email : doctor_tem@doctor.com
-
-password : 123123123
